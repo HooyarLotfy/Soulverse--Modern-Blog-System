@@ -9,15 +9,15 @@ class AdminUserSeeder extends Seeder
 {
     public function run()
     {
-        $user = User::where('email', 'robin.hooyar@gmail.com')->first();
+        // This seeder is disabled for security reasons
+        // To create an admin user, please follow these steps:
+        // 1. Register a new user through the web interface
+        // 2. Run: php artisan tinker
+        // 3. Execute: User::where('email', 'your-email@example.com')->update(['is_admin' => true]);
         
-        if ($user) {
-            $user->is_admin = 1;
-            $user->save();
-            
-            echo "User {$user->name} ({$user->email}) has been made admin.\n";
-        } else {
-            echo "User with email robin.hooyar@gmail.com not found.\n";
-        }
+        echo "AdminUserSeeder is disabled for security.\n";
+        echo "Please create admin users manually using the instructions in this file.\n";
+        
+        return;
     }
 }

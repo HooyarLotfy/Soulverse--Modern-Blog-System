@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,11 +13,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // Remove all existing data (SQLite compatible)
+        \DB::table('posts')->delete();
+        \DB::table('users')->delete();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        // Create the admin user
+        $admin = User::create([
+            'name' => 'Hooyar Lotfy',
+            'email' => 'robin.hooyar@gmail.com',
+            'password' => Hash::make('Maya68163404'),
+            'is_admin' => true,
+        ]);
+
+        // Seed posts with demo content
+        $this->call([
+            PostSeeder::class,
         ]);
     }
 }

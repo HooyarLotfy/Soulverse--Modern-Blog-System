@@ -17,13 +17,8 @@ class DatabaseSeeder extends Seeder
         \DB::table('posts')->delete();
         \DB::table('users')->delete();
 
-        // Create the admin user
-        $admin = User::create([
-            'name' => 'Hooyar Lotfy',
-            'email' => 'robin.hooyar@gmail.com',
-            'password' => Hash::make('Maya68163404'),
-            'is_admin' => true,
-        ]);
+        // Note: Admin user creation removed for security
+        // Please create admin users manually using instructions in ADMIN_SETUP.md
 
         // Seed posts with demo content
         $this->call([

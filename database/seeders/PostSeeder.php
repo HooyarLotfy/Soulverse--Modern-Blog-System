@@ -12,11 +12,13 @@ class PostSeeder extends Seeder
     {
         $user = User::first();
         if (!$user) {
+            // Create a demo user for posts if no users exist
+            // Note: In production, create admin users manually (see ADMIN_SETUP.md)
             $user = User::create([
-                'name' => 'Hooyar Lotfy',
-                'email' => 'robin.hooyar@gmail.com',
-                'password' => bcrypt('Maya68163404'),
-                'is_admin' => true,
+                'name' => 'Demo User',
+                'email' => 'demo@example.com',
+                'password' => bcrypt('password'),
+                'is_admin' => false, // Not admin by default for security
             ]);
         }
 
